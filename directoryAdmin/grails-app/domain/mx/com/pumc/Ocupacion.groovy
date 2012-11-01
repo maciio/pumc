@@ -28,10 +28,15 @@ class Ocupacion {
     }
 
     static mapping = {
+        table 'pumc_c_ocupacion'
         id(column: 'id_ocupacion')
     }
     static constraints = {
 
+    }
+
+    String toString() {
+        descripcion
     }
 
 }

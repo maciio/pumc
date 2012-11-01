@@ -23,6 +23,24 @@
 			</g:if>
 			<ol class="property-list persona">
 			
+				<g:if test="${personaInstance?.edad}">
+				<li class="fieldcontain">
+					<span id="edad-label" class="property-label"><g:message code="persona.edad.label" default="Edad" /></span>
+					
+						<span class="property-value" aria-labelledby="edad-label"><g:fieldValue bean="${personaInstance}" field="edad"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${personaInstance?.email}">
+				<li class="fieldcontain">
+					<span id="email-label" class="property-label"><g:message code="persona.email.label" default="Email" /></span>
+					
+						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${personaInstance}" field="email"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${personaInstance?.nacionalidad}">
 				<li class="fieldcontain">
 					<span id="nacionalidad-label" class="property-label"><g:message code="persona.nacionalidad.label" default="Nacionalidad" /></span>
@@ -59,6 +77,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${personaInstance?.ocupacion}">
+				<li class="fieldcontain">
+					<span id="ocupacion-label" class="property-label"><g:message code="persona.ocupacion.label" default="Ocupacion" /></span>
+					
+						<span class="property-value" aria-labelledby="ocupacion-label"><g:link controller="ocupacion" action="show" id="${personaInstance?.ocupacion?.id}">${personaInstance?.ocupacion?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${personaInstance?.apellido}">
 				<li class="fieldcontain">
 					<span id="apellido-label" class="property-label"><g:message code="persona.apellido.label" default="Apellido" /></span>
@@ -68,11 +95,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${personaInstance?.email}">
+				<g:if test="${personaInstance?.directorio}">
 				<li class="fieldcontain">
-					<span id="email-label" class="property-label"><g:message code="persona.email.label" default="Email" /></span>
+					<span id="directorio-label" class="property-label"><g:message code="persona.directorio.label" default="Directorio" /></span>
 					
-						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${personaInstance}" field="email"/></span>
+						<span class="property-value" aria-labelledby="directorio-label"><g:link controller="directorio" action="show" id="${personaInstance?.directorio?.id}">${personaInstance?.directorio?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -82,15 +109,6 @@
 					<span id="nombre-label" class="property-label"><g:message code="persona.nombre.label" default="Nombre" /></span>
 					
 						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${personaInstance}" field="nombre"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${personaInstance?.ocupacion}">
-				<li class="fieldcontain">
-					<span id="ocupacion-label" class="property-label"><g:message code="persona.ocupacion.label" default="Ocupacion" /></span>
-					
-						<span class="property-value" aria-labelledby="ocupacion-label"><g:link controller="ocupacion" action="show" id="${personaInstance?.ocupacion?.id}">${personaInstance?.ocupacion?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
