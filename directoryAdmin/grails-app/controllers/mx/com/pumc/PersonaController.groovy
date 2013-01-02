@@ -20,6 +20,7 @@ class PersonaController {
     }
 
     def save() {
+        log.debug("### -->BEFORE SAVE()")
         def personaInstance = new Persona(params)
         if (!personaInstance.save(flush: true)) {
             render(view: "create", model: [personaInstance: personaInstance])

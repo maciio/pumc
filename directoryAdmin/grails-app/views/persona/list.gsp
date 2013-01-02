@@ -24,6 +24,8 @@
 				<thead>
 					<tr>
 					
+						<g:sortableColumn property="apellidoMaterno" title="${message(code: 'persona.apellidoMaterno.label', default: 'Apellido Materno')}" />
+					
 						<g:sortableColumn property="edad" title="${message(code: 'persona.edad.label', default: 'Edad')}" />
 					
 						<g:sortableColumn property="email" title="${message(code: 'persona.email.label', default: 'Email')}" />
@@ -32,9 +34,7 @@
 					
 						<g:sortableColumn property="direccionParticular" title="${message(code: 'persona.direccionParticular.label', default: 'Direccion Particular')}" />
 					
-						<g:sortableColumn property="telMovil" title="${message(code: 'persona.telMovil.label', default: 'Tel Movil')}" />
-					
-						<g:sortableColumn property="extOficina" title="${message(code: 'persona.extOficina.label', default: 'Ext Oficina')}" />
+						<g:sortableColumn property="telOficina" title="${message(code: 'persona.telOficina.label', default: 'Tel Oficina')}" />
 					
 					</tr>
 				</thead>
@@ -42,7 +42,9 @@
 				<g:each in="${personaInstanceList}" status="i" var="personaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${personaInstance.id}">${fieldValue(bean: personaInstance, field: "edad")}</g:link></td>
+						<td><g:link action="show" id="${personaInstance.id}">${fieldValue(bean: personaInstance, field: "apellidoMaterno")}</g:link></td>
+					
+						<td>${fieldValue(bean: personaInstance, field: "edad")}</td>
 					
 						<td>${fieldValue(bean: personaInstance, field: "email")}</td>
 					
@@ -50,9 +52,7 @@
 					
 						<td>${fieldValue(bean: personaInstance, field: "direccionParticular")}</td>
 					
-						<td>${fieldValue(bean: personaInstance, field: "telMovil")}</td>
-					
-						<td>${fieldValue(bean: personaInstance, field: "extOficina")}</td>
+						<td>${fieldValue(bean: personaInstance, field: "telOficina")}</td>
 					
 					</tr>
 				</g:each>

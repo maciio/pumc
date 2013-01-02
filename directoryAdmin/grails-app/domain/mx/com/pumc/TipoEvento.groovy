@@ -1,18 +1,17 @@
 package mx.com.pumc
 
-class Ocupacion {
-
+class TipoEvento {
     String nombre
     String descripcion
 
     static mapping = {
-        table 'pumc_c_ocupacion'
-        id(column: 'id_ocupacion')
+        table 'pumc_c_tipo_evento'
+        id column: 'id_tipo_evento'
     }
-    static constraints = {}
+    static constraints = {
+    }
 
     String toString() {
         descripcion
     }
-
 }

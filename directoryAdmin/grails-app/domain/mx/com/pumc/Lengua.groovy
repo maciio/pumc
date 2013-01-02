@@ -10,4 +10,8 @@ class Lengua {
     }
     static constraints = {
     }
+
+    String toString(){
+        descripcion
+    }
 }

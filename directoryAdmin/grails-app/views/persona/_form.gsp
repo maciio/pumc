@@ -2,6 +2,14 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'apellidoMaterno', 'error')} ">
+	<label for="apellidoMaterno">
+		<g:message code="persona.apellidoMaterno.label" default="Apellido Materno" />
+		
+	</label>
+	<g:textField name="apellidoMaterno" value="${personaInstance?.apellidoMaterno}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'edad', 'error')} ">
 	<label for="edad">
 		<g:message code="persona.edad.label" default="Edad" />
@@ -34,20 +42,28 @@
 	<g:textField name="direccionParticular" value="${personaInstance?.direccionParticular}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'telOficina', 'error')} ">
+	<label for="telOficina">
+		<g:message code="persona.telOficina.label" default="Tel Oficina" />
+		
+	</label>
+	<g:field name="telOficina" type="number" value="${personaInstance.telOficina}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'extensionOficina', 'error')} ">
+	<label for="extensionOficina">
+		<g:message code="persona.extensionOficina.label" default="Extension Oficina" />
+		
+	</label>
+	<g:field name="extensionOficina" type="number" value="${personaInstance.extensionOficina}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'telMovil', 'error')} ">
 	<label for="telMovil">
 		<g:message code="persona.telMovil.label" default="Tel Movil" />
 		
 	</label>
 	<g:field name="telMovil" type="number" value="${personaInstance.telMovil}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'extOficina', 'error')} ">
-	<label for="extOficina">
-		<g:message code="persona.extOficina.label" default="Ext Oficina" />
-		
-	</label>
-	<g:field name="extOficina" type="number" value="${personaInstance.extOficina}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'ocupacion', 'error')} ">
@@ -58,12 +74,76 @@
 	<g:select id="ocupacion" name="ocupacion.id" from="${mx.com.pumc.Ocupacion.list()}" optionKey="id" value="${personaInstance?.ocupacion?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'apellido', 'error')} ">
-	<label for="apellido">
-		<g:message code="persona.apellido.label" default="Apellido" />
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'seccion', 'error')} ">
+	<label for="seccion">
+		<g:message code="persona.seccion.label" default="Seccion" />
 		
 	</label>
-	<g:textField name="apellido" value="${personaInstance?.apellido}"/>
+	<g:select id="seccion" name="seccion.id" from="${mx.com.pumc.Seccion.list()}" optionKey="id" value="${personaInstance?.seccion?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'medio', 'error')} ">
+	<label for="medio">
+		<g:message code="persona.medio.label" default="Medio" />
+		
+	</label>
+	<g:textField name="medio" value="${personaInstance?.medio}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'titulo', 'error')} ">
+	<label for="titulo">
+		<g:message code="persona.titulo.label" default="Titulo" />
+		
+	</label>
+	<g:textField name="titulo" value="${personaInstance?.titulo}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'cargo', 'error')} ">
+	<label for="cargo">
+		<g:message code="persona.cargo.label" default="Cargo" />
+		
+	</label>
+	<g:textField name="cargo" value="${personaInstance?.cargo}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'procedencia', 'error')} ">
+	<label for="procedencia">
+		<g:message code="persona.procedencia.label" default="Procedencia" />
+		
+	</label>
+	<g:textField name="procedencia" value="${personaInstance?.procedencia}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'lengua', 'error')} ">
+	<label for="lengua">
+		<g:message code="persona.lengua.label" default="Lengua" />
+		
+	</label>
+	<g:select id="lengua" name="lengua.id" from="${mx.com.pumc.Lengua.list()}" optionKey="id" value="${personaInstance?.lengua?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'institucion', 'error')} ">
+	<label for="institucion">
+		<g:message code="persona.institucion.label" default="Institucion" />
+		
+	</label>
+	<g:select id="institucion" name="institucion.id" from="${mx.com.pumc.Institucion.list()}" optionKey="id" value="${personaInstance?.institucion?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'evento', 'error')} ">
+	<label for="evento">
+		<g:message code="persona.evento.label" default="Evento" />
+		
+	</label>
+	<g:select id="evento" name="evento.id" from="${mx.com.pumc.Evento.list()}" optionKey="id" value="${personaInstance?.evento?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'apellidoPaterno', 'error')} ">
+	<label for="apellidoPaterno">
+		<g:message code="persona.apellidoPaterno.label" default="Apellido Paterno" />
+		
+	</label>
+	<g:textField name="apellidoPaterno" value="${personaInstance?.apellidoPaterno}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'directorio', 'error')} required">
@@ -80,13 +160,5 @@
 		
 	</label>
 	<g:textField name="nombre" value="${personaInstance?.nombre}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'telOficina', 'error')} required">
-	<label for="telOficina">
-		<g:message code="persona.telOficina.label" default="Tel Oficina" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="telOficina" type="number" value="${personaInstance.telOficina}" required=""/>
 </div>
 

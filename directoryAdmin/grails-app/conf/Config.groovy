@@ -86,14 +86,10 @@ log4j = {
     appenders {
         console name: 'stdout', layout: logLayoutPattern
         rollingFile name: 'rollingFile',
-                file: "${logDirectory}/montepresta.log",
+                file: "${logDirectory}/pumc.log",
                 layout: logLayoutPattern
     }
-    debug rollingFile:
-            [ 'mx.com.montepresta', 'grails.app.controller',
-              'grails.app.domain', 'grails.app.service', 'mx.com.itbrain' ]
-    error stdout:
-            'org.codehaus.groovy.grails.web.servlet',        // controllers
+    error 'org.codehaus.groovy.grails.web.servlet',        // controllers
             'org.codehaus.groovy.grails.web.pages',          // GSP
             'org.codehaus.groovy.grails.web.sitemesh',       // layouts
             'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
@@ -104,5 +100,29 @@ log4j = {
             'org.springframework',
             'org.hibernate',
             'net.sf.ehcache.hibernate'
+    debug 'mx.com.pumc',
+            'grails.app.controller',
+            'grails.app.domain',
+            'grails.app.service'
 
+    environments {
+        development {
+//            root {
+//                debug 'file', 'stdout'
+//            }
+            debug 'grails.app'
+        }
+        test {
+//            root {
+//                info 'file', 'stdout'
+//            }
+            debug 'grails.app'
+        }
+        production {
+            root {
+                error 'file'
+            }
+            error 'grails.app'
+        }
+    }
 }
