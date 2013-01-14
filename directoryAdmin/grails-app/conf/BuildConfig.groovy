@@ -6,6 +6,9 @@ grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
+//Enable controller closure old style
+grails.compile.artefacts.closures.convert = true
+
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
@@ -37,6 +40,7 @@ grails.project.dependency.resolution = {
         // MySQL
         runtime 'mysql:mysql-connector-java:5.1.13'
         test 'org.hamcrest:hamcrest-all:1.1'
+        build 'net.sourceforge.jexcelapi:jxl:2.6.12'
     }
 
     plugins {

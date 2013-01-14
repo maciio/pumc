@@ -14,5 +14,6 @@ class Institucion {
     }
     static constraints = {
         direccion size: 0..500
+        carreras nullable: true
     }
 }

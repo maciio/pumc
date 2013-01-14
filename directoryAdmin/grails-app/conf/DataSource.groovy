@@ -30,11 +30,11 @@ hibernateProperties {
 environments {
     development {
         dataSource {
-            dbCreate = "update" // one of 'create', 'create-drop','update'
+            dbCreate = "create" // one of 'create', 'create-drop','update'
             url = "jdbc:mysql://localhost/${base.esquema}?useUnicode=yes&useOldAliasMetadataBehavior=true"
         }
         hibernate {
-            show_sql = true
+            show_sql = false
         }
     }
     test {

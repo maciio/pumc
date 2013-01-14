@@ -12,7 +12,7 @@ class Ocupacion {
     static constraints = {}
 
     String toString() {
-        descripcion
+        nombre + "-" + descripcion
     }
 
 }
