@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest
 import org.springframework.web.multipart.commons.CommonsMultipartFile
 
 
-class UploadDataController {
+class UploadDirectoryController {
 
     def uploadDataService
 
@@ -59,7 +59,7 @@ class UploadDataController {
             if (skipped.size() > 0) {
                 flash.message += "  Rows ${skipped.join(', ')} were skipped because they were incomplete or malformed"
             }
-            redirect(controller: "uploadData", action: "index")
+            redirect(controller: "uploadDirectory", action: "index")
         } else {
             flash.message = 'El archivo no puede ir vacio'
             redirect(action: 'index')
@@ -92,7 +92,7 @@ class UploadDataController {
                 List personaList = importer.getPersonList()
                 added = uploadDataService.guardarPersona(personaList, directorio)
                 flash.message = "${added} registros han sido agregados"  //TODO en msn.properties
-                redirect(controller: "uploadData", action: "index")
+                redirect(controller: "uploadDirectory", action: "index")
             } else {
                 flash.message = 'Se necesita especificar un tipo de directorio' //TODO en msn.properties
                 redirect(action: 'index')
