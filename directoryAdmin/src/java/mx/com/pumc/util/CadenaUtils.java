@@ -18,7 +18,6 @@ import java.util.regex.Pattern;
 /**
  * Utilerias sobre cadenas.
  *
- * @author Rafael Antonio Guti�rrez Turullols, Oswaldo Herrera
  */
 public class CadenaUtils {
 
@@ -590,4 +589,36 @@ public class CadenaUtils {
         return cadena.substring(1,cadena.length()-1);
     }
 
+    /**
+     * Formatea una cadena larga a un formato leible de 5 cadenas en 5 cadenas por linea con salto de linea en html
+     * @return
+     */
+    public static String formatearCadenaFormatoLeible(String cadena) {
+        String token[] = cadena.split(" ");
+        String resultado = "";
+        int contador = 0;
+        for (int i = 0; i < token.length; i++) {
+            contador++;
+            resultado += " " + token[i];
+            if (contador % 5 == 0) {
+                resultado += "<br>";
+            }
+        }
+        return resultado;
+    }
+
+    /**
+     * Une las cadenas recibidas y las separa con un espacio
+     * => Nombre(s) APaterno AMaterno
+     *
+     * @param nombres los nombres o valores de cadenas
+     * @return el nombre formateado
+     */
+    public static String unirCadenaEspacio(String... nombres) {
+        StringBuilder cadena = new StringBuilder();
+        for (String nombre : nombres) {
+            cadena.append(nombre).append(' ');
+        }
+        return cadena.toString().trim();
+    }
 }

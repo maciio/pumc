@@ -46,6 +46,8 @@ grails.views.gsp.sitemesh.preprocess = true
 // scaffolding templates configuration
 grails.scaffolding.templates.domainSuffix = 'Instance'
 
+// library used for views
+grails.views.javascript.library = "jquery"
 // Set to false to use the new Grails 1.2 JSONBuilder in the render method
 grails.json.legacy.builder = false
 // enabled native2ascii conversion of i18n properties files
@@ -61,10 +63,14 @@ grails.exceptionresolver.params.exclude = ['password']
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
 
+//Fix grails taglib g:paginate to work with bootstrap css.
+//grails.plugins.twitterbootstrap.fixtaglib = true
+
+
 environments {
     development {
         grails.logging.jul.usebridge = true
-        grails.serverURL = "http://localhost:8080/${appName}"
+        grails.serverURL = "http://localhost:9090/${appName}"
     }
     test {
         grails.serverURL = "http://localhost:8080/${appName}"

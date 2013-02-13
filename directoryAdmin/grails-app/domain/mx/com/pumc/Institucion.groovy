@@ -16,4 +16,8 @@ class Institucion {
         direccion size: 0..500
         carreras nullable: true
     }
+
+    String toString() {
+        nombre
+    }
 }

@@ -1,10 +1,11 @@
 package mx.com.pumc
 
+import mx.com.pumc.util.CadenaUtils
+import org.apache.commons.lang.StringUtils
 import org.springframework.dao.DataIntegrityViolationException
 
 class PersonaController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -33,13 +34,17 @@ class PersonaController {
 
     def show(Long id) {
         def personaInstance = Persona.get(id)
+        String direccion = ""
+        if (personaInstance.institucion != null){
+             direccion = CadenaUtils.formatearCadenaFormatoLeible(personaInstance.institucion.direccion)
+        }
         if (!personaInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'persona.label', default: 'Persona'), id])
             redirect(action: "list")
             return
         }
 
-        [personaInstance: personaInstance]
+        [personaInstance: personaInstance, direccionInstitucion: direccion]
     }
 
     def edit(Long id) {

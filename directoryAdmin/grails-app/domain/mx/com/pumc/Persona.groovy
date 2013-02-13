@@ -12,8 +12,9 @@ class Persona extends BaseAuditableEntity implements Serializable {
     String direccionParticular
     String telefono1
     String telefono2
-    String cargo
     String titulo
+    String cargo
+    String carrera
 
     //TODO Verificar Informacion con PUMC
     String medio //
@@ -34,6 +35,8 @@ class Persona extends BaseAuditableEntity implements Serializable {
     }
 
     static constraints = {
+        nombre nullable: false, blank: false
+        apellidos nullable: false, blank: false
         edad nullable: true, blank: true
         email nullable: true, blank: true
         nacionalidad nullable: true, blank: true
@@ -45,6 +48,7 @@ class Persona extends BaseAuditableEntity implements Serializable {
         medio nullable: true
         titulo nullable: true
         cargo nullable: true
+        carrera nullable: true, blank: true
         procedencia nullable: true
         lengua nullable: true
         institucion nullable: true
@@ -52,6 +56,10 @@ class Persona extends BaseAuditableEntity implements Serializable {
     }
 
     String toString() {
+        nombre + " " + apellidos
+    }
+
+    public getNombreCompleto() {
         nombre + " " + apellidos
     }
 
