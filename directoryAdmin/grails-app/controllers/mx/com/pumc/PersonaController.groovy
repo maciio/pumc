@@ -21,22 +21,27 @@ class PersonaController {
     }
 
     def save() {
-        log.debug("### -->BEFORE SAVE()")
+        log.debug("### -->save()")
         def personaInstance = new Persona(params)
         if (!personaInstance.save(flush: true)) {
             render(view: "create", model: [personaInstance: personaInstance])
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'persona.label', default: 'Persona'), personaInstance.id])
-        redirect(action: "show", id: personaInstance.id)
+        redirect(action: "show", params: [id: personaInstance.id, isGuardar: true])
     }
 
-    def show(Long id) {
+    def show(Long id, Boolean isGuardar) {
+        log.debug("parmas: "+ params)
         def personaInstance = Persona.get(id)
         String direccion = ""
-        if (personaInstance.institucion != null){
-             direccion = CadenaUtils.formatearCadenaFormatoLeible(personaInstance.institucion.direccion)
+        def exito = null
+        log.debug("isGuardar: " + isGuardar)
+        if (isGuardar) {
+            exito = message(code: 'default.created.message', args: [personaInstance.nombreCompleto])
+        }
+        if (personaInstance.institucion != null) {
+            direccion = CadenaUtils.formatearCadenaFormatoLeible(personaInstance.institucion.direccion)
         }
         if (!personaInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'persona.label', default: 'Persona'), id])
@@ -44,7 +49,7 @@ class PersonaController {
             return
         }
 
-        [personaInstance: personaInstance, direccionInstitucion: direccion]
+        [personaInstance: personaInstance, direccionInstitucion: direccion, exito: exito]
     }
 
     def edit(Long id) {
@@ -69,8 +74,8 @@ class PersonaController {
         if (version != null) {
             if (personaInstance.version > version) {
                 personaInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'persona.label', default: 'Persona')] as Object[],
-                          "Another user has updated this Persona while you were editing")
+                        [message(code: 'persona.label', default: 'Persona')] as Object[],
+                        "Another user has updated this Persona while you were editing")
                 render(view: "edit", model: [personaInstance: personaInstance])
                 return
             }

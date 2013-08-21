@@ -31,8 +31,11 @@
 
     <div class="span9">
         <div id="show-persona" class="content scaffold-show" role="main">
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
+            <g:if test="${exito}">
+                <div class="alert alert-block" role="status">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    ${exito}
+                </div>
             </g:if>
             <div class="page-header"><h1><g:message code="pumc.persona.data.label"/></h1></div>
             <dl>

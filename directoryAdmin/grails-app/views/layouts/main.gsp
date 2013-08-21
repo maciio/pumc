@@ -16,9 +16,12 @@
     <![endif]-->
     <g:javascript src="jquery/jquery-1.8.3.js"/>
     <g:javascript src="jquery/jquery-ui-bootstrap/js/jquery-ui-1.8.16.custom.min.js"/>
+    <g:javascript src="jquery/jquery-ui-bootstrap/third-party/jQuery-UI-FileInput/js/fileinput.jquery.js"/>
     <g:javascript src="bootstrap/js/bootstrap.js"/>
     <link href="${resource(dir: "js/bootstrap/css", file: "bootstrap.css")}" rel="stylesheet" media="screen">
-    <link href="${resource(dir: "js/bootstrap/css", file: "bootstrap-responsive.min.css")}" rel="stylesheet">
+    <link href="${resource(dir: "js/bootstrap/css", file: "bootstrap-responsive.css")}" rel="stylesheet">
+    <link href="${resource(dir: "css/jquery-ui-bootstrap/custom-theme", file: "jquery-ui-1.8.16.custom.css")}" rel="stylesheet">
+    <link href="${resource(dir: "js/jquery/jquery-ui-bootstrap/third-party/jQuery-UI-FileInput/css", file: "enhanced.css")}" rel="stylesheet">
     <link href="${resource(dir: "css", file: "scaffolding.css")}" rel="stylesheet">
     <link rel="shortcut icon" href="${resource(dir: 'images/pumc', file: 'pumc.ico')}" type="image/x-icon">
     <link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
@@ -43,8 +46,8 @@
                 <ul class="nav">
                     <li ${request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : ''}><a href="${createLink(uri: '/')}">Inicio</a></li>
                     <li ${controllerName == 'persona' ? ' class="active"' : ''}><g:link controller="persona">Invitados</g:link></li>
-                    <li ${controllerName  == 'uploadDirectory' ? ' class="active"' : ''}><g:link controller="uploadDirectory">Directorio</g:link></li>
-                    <li><g:link url="#">M@il</g:link></li>
+                    <li ${controllerName == 'uploadDirectory' ? ' class="active"' : ''}><g:link controller="uploadDirectory">Directorio</g:link></li>
+                    <li ${controllerName == 'email' ? ' class="active"' : ''}><g:link controller="email">M@il</g:link></li>
                 </ul>
             </div>
         </div>

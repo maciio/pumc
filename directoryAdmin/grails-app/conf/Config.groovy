@@ -63,8 +63,21 @@ grails.exceptionresolver.params.exclude = ['password']
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
 
-//Fix grails taglib g:paginate to work with bootstrap css.
-//grails.plugins.twitterbootstrap.fixtaglib = true
+grails {
+    //You need to add the specified cert for the mail provider
+    mail {
+        //example for gmail
+        host = "smtp.gmail.com"
+        port = "465"
+        username = "youremail@gmail.com"
+        password = "yourpassword"
+        props = ["mail.smtp.auth": "true",
+                "mail.smtp.socketFactory.port": "465",
+                "mail.smtp.socketFactory.class": "javax.net.ssl.SSLSocketFactory",
+                "mail.smtp.socketFactory.fallback": "false"]
+    }
+}
+grails.mail.default.from = "wolf.eos.v6@gmail.com"
 
 
 environments {
@@ -119,9 +132,6 @@ log4j = {
             debug 'grails.app'
         }
         test {
-//            root {
-//                info 'file', 'stdout'
-//            }
             debug 'grails.app'
         }
         production {

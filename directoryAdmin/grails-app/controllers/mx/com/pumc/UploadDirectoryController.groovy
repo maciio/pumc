@@ -6,12 +6,20 @@ import mx.com.pumc.dominio.UploadDirectoryUtil
 import org.springframework.web.multipart.MultipartHttpServletRequest
 import org.springframework.web.multipart.commons.CommonsMultipartFile
 
+import java.awt.Color
+
 
 class UploadDirectoryController {
 
     def uploadDataService
 
-    def index() {}
+    def index() {
+        redirect(action: "upload")
+    }
+
+    def upload() {
+
+    }
 
     @Deprecated
     def uploadJXA() {
@@ -73,10 +81,10 @@ class UploadDirectoryController {
 
         MultipartHttpServletRequest mpr = (MultipartHttpServletRequest) request;
         CommonsMultipartFile file = (CommonsMultipartFile) mpr.getFile("file");
-        log.debug("Nombre del archivo: " + file.getName())
-        log.debug("ContentType: " + file.getContentType())
+        //log.debug("Nombre del archivo: " + file.getName())
+        //log.debug("ContentType: " + file.getContentType())
         if (!file.empty && (file.getContentType() == "application/vnd.ms-excel"
-                ||  file.getContentType() == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
+                || file.getContentType() == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
             if (directorio) {
                 //def fs = new POIFSFileSystem(file.getInputStream())
                 InputStream inputStream = file.getInputStream()
